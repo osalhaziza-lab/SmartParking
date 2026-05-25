@@ -3,16 +3,19 @@ import { C } from "../constants/colors";
 import { PARKINGS } from "../constants/data";
 
 import StatsBar      from "../components/layout/StatsBar";
+import { useNavigate } from "react-router-dom"; 
 import Hero          from "../components/sections/Hero";
 import Partners      from "../components/sections/Partners";
 import ParkingCard   from "../components/parking/ParkingCard";
 import DesktopSidebar from "../components/parking/DesktopSidebar";
 import FilterDrawer  from "../components/parking/FilterDrawer";
+import logoApp from '../assets/logo.png';
 
 
 export default function HomePage() {
+  const navigate = useNavigate();
+
   const [filterOpen, setFilterOpen]       = useState(false);
-  const [selectedParking, setSelectedParking] = useState(null);
   const [visibleCount, setVisibleCount]   = useState(3);
   const [filters, setFilters] = useState({
     maxPrice: 5,
@@ -83,7 +86,7 @@ export default function HomePage() {
               <ParkingCard
                 key={p.id}
                 p={p}
-                onReserve={setSelectedParking}
+                onReserve={(parking) => navigate(`/parking/${parking.id}`)} 
               />
             ))}
           </div>

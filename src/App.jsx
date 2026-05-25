@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+import { Routes, Route, useLocation, Navigate} from 'react-router-dom';
+import AuthPage from './pages/AuthPage';
+import SignUpPage from './pages/SignUpPage';
+import ParkingDetailPage from './pages/ParkingDetailPage';
+import ReservationPage from './pages/ReservationPage';
+import TicketPage from './pages/TicketPage';
+
 import Navbar      from "./components/layout/Navbar";
 import Footer      from "./components/layout/Footer";
 import HomePage    from "./pages/HomePage";
@@ -8,6 +15,11 @@ import HistoryPage from "./pages/HistoryPage";
 
 export default function App() {
   const [view, setView] = useState("home"); // 'home' | 'profile' | 'history'
+  const location = useLocation();
+
+  // Liste des routes
+  const mesRoutes = ["/login", "/signup", "/parking", "/reservation", "/ticket"];
+  const surUnePage = mesRoutes.some(r => location.pathname.startsWith(r));
 
   return (
     <>
@@ -51,13 +63,27 @@ export default function App() {
         }
       `}</style>
 
-      <Navbar onProfileClick={() => setView("profile")} />
+      {!surUnePage && <Navbar onProfileClick={() => setView("profile")} />}
+      {/* Pages view cachées quand on est sur les routes */}
+      {!surUnePage && (
+        <>
+          {view === "home"    && <HomePage />}
+          {view === "profile" && <ProfilePage onNavigate={setView} />}
+          {view === "history" && <HistoryPage onNavigate={setView} />}
+        </>
+      )}
 
-      {view === "home"    && <HomePage />}
-      {view === "profile" && <ProfilePage  onNavigate={setView} />}
-      {view === "history" && <HistoryPage  onNavigate={setView} />}
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login"       element={<AuthPage onSuccess={() => setView("home")} />} />
+        <Route path="/signup"      element={<SignUpPage onSuccess={() => setView("home")} />} />
+        <Route path="/parking/:id" element={<ParkingDetailPage />} />
+        <Route path="/reservation" element={<ReservationPage />} />
+        <Route path="/ticket/:id"  element={<TicketPage />} />
+      </Routes>
 
-      <Footer />
+
+      {!surUnePage && <Footer />}    
     </>
   );
 }

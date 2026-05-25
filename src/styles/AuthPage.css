@@ -1,0 +1,409 @@
+/* ─────────────────────────────────────────
+   Tokens
+───────────────────────────────────────── */
+:root {
+  --navy:   #042C53;
+  --blue:   #185FA5;
+  --green:  #1D9E75;
+  --red:    #E24B4A;
+  --text-muted: #85B7EB;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --transition: 0.2s ease;
+}
+
+/* ─────────────────────────────────────────
+   Layout racine
+───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* ─────────────────────────────────────────
+   Bannière (Desktop seulement)
+───────────────────────────────────────── */
+.banner {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .banner {
+    display: flex;
+    flex: 1.2;
+    background: var(--blue);
+  }
+}
+
+.banner__inner {
+  background: var(--navy);
+  width: 100%;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cercles décoratifs */
+.banner__inner::before,
+.banner__inner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.banner__inner::before {
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: rgba(24, 95, 165, .10);
+}
+
+.banner__inner::after {
+  bottom: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(29, 158, 117, .08);
+}
+
+/* Badge live */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(29, 158, 117, .14);
+  border: 1px solid rgba(29, 158, 117, .30);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #5DCAA5;
+  margin-bottom: 24px;
+}
+
+.live-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .4; }
+}
+
+/* Titre */
+.banner__title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: white;
+}
+
+/* Sous-titre */
+.banner__sub {
+  
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0 auto 32px;
+  max-width: 320px;
+}
+
+/* Stats */
+.banner__stats {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+}
+
+.stat__value {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.stat__label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Carte carte */
+.banner__map-card {
+  background: rgba(24, 95, 165, .10);
+  border: 1px solid rgba(24, 95, 165, .18);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.map-preview {
+  width: 100%;
+  height: 120px;
+  background: rgba(24, 95, 165, .12);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* Spots */
+.spots-row {
+  display: flex;
+  gap: 8px;
+}
+
+.spot {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.spot--free {
+  background: rgba(29, 158, 117, .12);
+  border: 1px solid rgba(29, 158, 117, .20);
+}
+
+.spot--busy {
+  background: rgba(226, 75, 74, .10);
+  border: 1px solid rgba(226, 75, 74, .20);
+}
+
+.spot__count {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.spot--free .spot__count { color: var(--green); }
+.spot--busy .spot__count { color: var(--red); }
+
+.spot__label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* ─────────────────────────────────────────
+   Côté formulaire
+───────────────────────────────────────── */
+.form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+}
+
+/* ─────────────────────────────────────────
+   Carte Auth
+───────────────────────────────────────── */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .06);
+}
+
+.auth-card__logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.auth-card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.auth-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+/* ─────────────────────────────────────────
+   Tabs
+───────────────────────────────────────── */
+.auth-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  gap: 4px;
+}
+
+.auth-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--blue);
+  transition: background var(--transition), color var(--transition);
+}
+
+.auth-tab--active {
+  background: var(--navy);
+  color: white;
+}
+
+/* ─────────────────────────────────────────
+   Champs
+───────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.field input {
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+.field input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(24, 95, 165, .12);
+}
+
+/* ─────────────────────────────────────────
+   Bouton principal
+───────────────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-primary:hover  { background: #17896a; }
+.btn-primary:active { transform: scale(.98); }
+
+/* ─────────────────────────────────────────
+   Séparateur
+───────────────────────────────────────── */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 22px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.divider span {
+  position: relative;
+  background: white;
+  padding: 0 12px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ─────────────────────────────────────────
+   Boutons sociaux
+───────────────────────────────────────── */
+.social-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-social {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.btn-social:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-social img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;
+}

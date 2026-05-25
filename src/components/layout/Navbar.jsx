@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { C } from "../../constants/colors";
-import logoImg from "../../logo.png";
+import logoApp from '../../assets/logo.png';
 
 export default function Navbar({ onProfileClick }) {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -12,8 +12,8 @@ export default function Navbar({ onProfileClick }) {
 
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <img src={logoImg} alt="Logo" style={{ width: 30, height: 30 }} />
-          <span style={{ color: "#fff", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18 }}>SmartPark</span>
+          <img src={logoApp} alt="Logo" style={{ width: 30, height: 30 }} />
+          <span style={{ color: "#fff", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18 }}>SmartParking</span>
         </div>
 
         {/* Actions droite */}

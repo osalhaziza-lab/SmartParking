@@ -19,7 +19,7 @@ const SUPPORT_LINKS = [
 const CONTACT_INFO = [
   ["📍", "15 Avenue des Champs-Élysées, 75008 Paris"],
   ["📞", "+33 1 23 45 67 89"],
-  ["✉️", "contact@smartpark.fr"],
+  ["✉️", "contact@smartparking.fr"],
 ];
 
 export default function Footer() {
@@ -75,7 +75,7 @@ export default function Footer() {
                 fontSize: 18,
               }}
             >
-              SmartPark
+              SmartParking
             </span>
           </div>
           <p style={{ fontSize: 13, lineHeight: 1.7 }}>
