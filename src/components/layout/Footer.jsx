@@ -17,9 +17,9 @@ const SUPPORT_LINKS = [
 ];
 
 const CONTACT_INFO = [
-  ["📍", "15 Avenue des Champs-Élysées, 75008 Paris"],
-  ["📞", "+33 1 23 45 67 89"],
-  ["✉️", "contact@smartparking.fr"],
+  ["📍", "15 Db Borgoune, 75008 Casablance"],
+  ["📞", "+212 522 123 456"],
+  ["✉️", "contact@smartparking.ma"],
 ];
 
 export default function Footer() {
@@ -223,8 +223,8 @@ export default function Footer() {
           gap: 8,
         }}
       >
-        <span>© 2025 SmartPark. Tous droits réservés.</span>
-        <span>Made with ❤️ in Paris</span>
+        <span>© 2025 SmartParking. Tous droits réservés.</span>
+        <span>Made with ❤️ in Casablance</span>
       </div>
     </footer>
   );

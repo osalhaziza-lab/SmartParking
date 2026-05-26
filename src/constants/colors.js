@@ -1,5 +1,5 @@
 export const C = {
-  navy: "#25477c",
+  navy: "#155791",
   teal: "#00897b",
   green: "#1db954",
   grayBg: "#f4f6f9",

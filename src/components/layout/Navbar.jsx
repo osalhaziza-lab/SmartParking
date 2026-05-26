@@ -12,8 +12,8 @@ export default function Navbar({ onProfileClick }) {
 
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <img src={logoApp} alt="Logo" style={{ width: 30, height: 30 }} />
-          <span style={{ color: "#fff", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18 }}>SmartParking</span>
+          <img src={logoApp} alt="Logo" style={{ width: 60, height: 45 }} />
+          <span style={{ color: "#ffffff", fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18 }}>SmartParking</span>
         </div>
 
         {/* Actions droite */}
@@ -37,8 +37,8 @@ export default function Navbar({ onProfileClick }) {
             borderRadius: 24, padding: "0 14px", height: 36, gap: 8, width: 340,
           }}>
             <span style={{ color: C.grayText, fontSize: 14 }}>📍</span>
-            <input style={{ border: "none", outline: "none", fontSize: 14, width: "100%", fontFamily: "'DM Sans', sans-serif", color: C.navy }} defaultValue="Casablanca, Anfa" />
-            <button style={{ background: C.teal, color: "#fff", border: "none", borderRadius: 20, padding: "5px 14px", fontSize: 13, cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}>Chercher</button>
+            <input style={{ border: "none", outline: "none", fontSize: 14, width: "100%", fontFamily: "'DM Sans', sans-serif", color: C.navy }} defaultValue="Casablanca" />
+            <button style={{ background: C.teal, color: "#fff", border: "none", borderRadius: 20, padding: "5px 14px", fontSize: 13, cursor: "pointer", fontWeight: 2, whiteSpace: "nowrap" }}>Chercher</button>
           </div>
 
           {/* Avatar profil */}
@@ -54,7 +54,7 @@ export default function Navbar({ onProfileClick }) {
         <div style={{ padding: "0 16px 12px", display: "flex", gap: 8 }}>
           <div style={{ display: "flex", alignItems: "center", background: "#fff", borderRadius: 12, padding: "0 14px", height: 44, gap: 8, flex: 1 }}>
             <span style={{ color: C.grayText }}>📍</span>
-            <input autoFocus placeholder="Casablanca,Anfa" style={{ border: "none", outline: "none", fontSize: 15, width: "100%", fontFamily: "'DM Sans', sans-serif", color: C.navy }} />
+            <input autoFocus placeholder="Casablanca" style={{ border: "none", outline: "none", fontSize: 15, width: "100%", fontFamily: "'DM Sans', sans-serif", color: C.navy }} />
           </div>
           <button style={{ background: C.teal, color: "#fff", border: "none", borderRadius: 12, padding: "0 18px", fontSize: 14, fontWeight: 600, cursor: "pointer", minHeight: 44 }}>OK</button>
         </div>
